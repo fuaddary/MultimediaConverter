@@ -6,8 +6,8 @@
                         <!-- Logo -->
                         <div class="content-header-item">
                             <a class="link-effect font-w700 mr-5" href="index.html">
-                                <i class="si si-fire text-primary"></i>
-                                <span class="font-size-xl text-dual-primary-dark">code</span><span class="font-size-xl text-primary">base</span>
+                                <i class="fa fa-google-wallet text-primary font-size-xl"></i>
+                                <span class="font-size-xl text-dual-primary-dark">Mm</span><span class="font-size-xl text-primary">C</span>
                             </a>
                         </div>
                         <!-- END Logo -->
@@ -27,61 +27,16 @@
                         <ul class="nav-main-header">
                             <li>
                                 <a class="active" href="bd_dashboard.html"><i class="si si-compass"></i>Dashboard</a>
+                            </li>                            
+                            <li>
+                                <a href="bd_dashboard.html"><i class="fa fa-image"></i>Image</a>
+                            </li>
+                            
+                            <li>
+                                <a href="bd_search.html"><i class="fa fa-music"></i>Audio</a>
                             </li>
                             <li>
-                                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-puzzle"></i>Variations</a>
-                                <ul>
-                                    <li>
-                                        <a href="bd_variations_hero_simple_1.html">Hero Simple 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_simple_2.html">Hero Simple 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_simple_3.html">Hero Simple 3</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_simple_4.html">Hero Simple 4</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_image_1.html">Hero Image 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_image_2.html">Hero Image 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_image_3.html">Hero Image 3</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_image_4.html">Hero Image 4</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_video_1.html">Hero Video 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_video_2.html">Hero Video 2</a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-submenu" data-toggle="nav-submenu" href="#">More Options</a>
-                                        <ul>
-                                            <li>
-                                                <a href="javascript:void(0)">Another Link</a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)">Another Link</a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)">Another Link</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="bd_search.html"><i class="si si-magnifier"></i>Search</a>
-                            </li>
-                            <li>
-                                <a href="be_pages_dashboard.html"><i class="si si-action-undo"></i>Go Back</a>
+                                <a href="be_pages_dashboard.html"><i class="fa fa-film"></i>Video</a>
                             </li>
                         </ul>
                         <!-- END Header Navigation -->
