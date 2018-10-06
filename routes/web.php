@@ -16,4 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/image','ImageController@index');
+Route::post('/image/uploads','ImageController@UploadImage')->name("image.uploads");
+Route::post('/image/convert','ImageController@Convert')->name("image.convert");
 
