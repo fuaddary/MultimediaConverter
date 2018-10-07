@@ -32,7 +32,7 @@
 		<form method="post" id="upload_form" enctype="multipart/form-data">
 			{{ csrf_field() }}
     		<div class="form-group" align="center">
-    			<label id="bb" class="btn btn-primary my-0 col-8"> Enter Your File
+    			<label id="bb" class="btn btn-primary my-0 col-8"><span id="uploaded_name">Enter Image File</span>
 				<input type="file" name="select_file" id="select_file" />
 				</label>
 		        <input type="submit" name="upload" id="upload" class="btn btn-primary" value="Upload">
@@ -40,6 +40,7 @@
 		</form>
 
 		<span id="uploaded_image"></span>
+		<span id="output_image"></span>
 
 	</div>
 
@@ -56,7 +57,8 @@
                 </div>
             </div>
             <div class="block-content">
-                <form action="{{ route('image.convert') }}" method="post" onsubmit="return false;">
+                <form id="convert_form" action="{{ route('image.convert') }}" method="post">
+                	{{ csrf_field() }}
                     <div class="form-group row">
                     	<div class="col-12">
                             <label for="contact1-firstname">Image Format</label>
@@ -80,33 +82,34 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-6">
-                            <label for="contact1-firstname">Height</label>
-                            <input type="text" class="form-control" id="contact1-firstname" name="contact1-firstname" placeholder="Enter your firstname..">
+                            <label for="height">Height</label>
+                            <input type="text" class="form-control" id="height" name="height" placeholder="Enter height..">
                         </div>
                         <div class="col-6">
-                            <label for="contact1-lastname">Width</label>
-                            <input type="text" class="form-control" id="contact1-lastname" name="contact1-lastname" placeholder="Enter your lastname..">
+                            <label for="width">Width</label>
+                            <input type="text" class="form-control" id="width" name="width" placeholder="Enter width..">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-6">
-                            <label for="contact1-firstname">Depth</label>
-                            <input type="text" class="form-control" id="contact1-firstname" name="contact1-firstname" placeholder="Enter your firstname..">
+                            <label for="Depth">Depth</label>
+                            <input type="text" class="form-control" id="Depth" name="Depth" placeholder="Enter depth..">
                         </div>
                         <div class="col-6">
-                            <label for="contact1-lastname">Conversion Rate</label>
-                            <input type="text" class="form-control" id="contact1-lastname" name="contact1-lastname" placeholder="Enter your lastname..">
+                            <label for="rate">Conversion Rate</label>
+                            <input type="text" class="form-control" id="rate" name="rate" placeholder="Enter converion rate..">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12" for="contact1-subject">Colorspace</label>
+                        <label class="col-12" for="color">Colorspace</label>
                         <div class="col-12">
-                            <select class="form-control" id="contact1-subject" name="contact1-subject" size="1">
+                            <select class="form-control" id="color" name="color" size="1">
                                 <option value="rgb">RGB</option>
                                 <option value="grayscale">Grayscale</option>
                             </select>
                         </div>
                     </div>
+                    <input id="image_name" name="image" type="hidden" value="">
                     <div class="form-group row">
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary bg-corporate col-12">
@@ -144,12 +147,38 @@ $(document).ready(function(){
     },  
    success:function(data)
    {
-   	$('#uploaded_image').html(data);
     $('#message').css('display', 'block');
     $('#message').html(data.message);
     $('#message').addClass(data.class_name);
     $('#uploaded_image').html(data.uploaded_image);
+    document.getElementById('image_name').value = data.image;
+    $('#uploaded_name').html(data.image);
+   }
+  })
+ });
 
+  $('#convert_form').on('submit', function(event){
+  event.preventDefault();
+  $.ajax({
+   url:"{{ route('image.convert') }}",
+   method:"POST",
+   data:new FormData(this),
+   dataType:'JSON',
+   contentType: false,
+   cache: false,
+   processData: false,
+       beforeSend:function(){
+     $('#output_image').html("<label class='text-success'>Converting...</label>");
+    },  
+   success:function(data)
+   {
+   	console.log(data);
+    $('#message2').css('display', 'block');
+    $('#message2').html(data.message);
+    $('#message2').addClass(data.class_name);
+    $('#output_image').html(data.uploaded_image);
+    document.getElementById('image_name').value = data.image;
+    $('#output_name').html(data.image);
    }
   })
  });

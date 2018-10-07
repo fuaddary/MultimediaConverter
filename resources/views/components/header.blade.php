@@ -5,7 +5,7 @@
                     <div class="content-header-section">
                         <!-- Logo -->
                         <div class="content-header-item">
-                            <a class="link-effect font-w700 mr-5" href="index.html">
+                            <a class="link-effect font-w700 mr-5" href="{{url('/')}}">
                                 <i class="fa fa-google-wallet text-primary font-size-xl"></i>
                                 <span class="font-size-xl text-dual-primary-dark">Mm</span><span class="font-size-xl text-primary">C</span>
                             </a>
@@ -26,17 +26,17 @@
                         -->
                         <ul class="nav-main-header">
                             <li>
-                                <a class="active" href="bd_dashboard.html"><i class="si si-compass"></i>Dashboard</a>
+                                <a href="{{url('/')}}"><i class="si si-compass"></i>Dashboard</a>
                             </li>                            
                             <li>
-                                <a href="bd_dashboard.html"><i class="fa fa-image"></i>Image</a>
+                                <a href="{{url('/image')}}"><i class="fa fa-image"></i>Image</a>
                             </li>
                             
                             <li>
-                                <a href="bd_search.html"><i class="fa fa-music"></i>Audio</a>
+                                <a href="{{url('/audio')}}"><i class="fa fa-music"></i>Audio</a>
                             </li>
                             <li>
-                                <a href="be_pages_dashboard.html"><i class="fa fa-film"></i>Video</a>
+                                <a href="{{url('/video')}}"><i class="fa fa-film"></i>Video</a>
                             </li>
                         </ul>
                         <!-- END Header Navigation -->

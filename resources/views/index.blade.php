@@ -20,7 +20,7 @@
 <div class="row gutters-tiny">
     <!-- Row #6 -->
     <div class="col-md-6 col-xl-4">
-        <a class="block block-transparent" href="javascript:void(0)">
+        <a class="block block-transparent" href="{{url('/image')}}">
             <div class="block-content block-content-full bg-corporate text-center">
                 <div class="item item-2x item-circle bg-black-op-10 mx-auto mb-20">
                     <i class="fa fa-image text-corporate-lighter"></i>
@@ -31,7 +31,7 @@
         </a>
     </div>
     <div class="col-md-6 col-xl-4">
-        <a class="block block-transparent" href="javascript:void(0)">
+        <a class="block block-transparent" href="{{url('/audio')}}">
             <div class="block-content block-content-full bg-danger text-center">
                 <div class="item item-2x item-circle bg-black-op-10 mx-auto mb-20">
                     <i class="fa fa-music text-danger-light"></i>
@@ -42,7 +42,7 @@
         </a>
     </div>
     <div class="col-md-6 col-xl-4">
-        <a class="block block-transparent" href="javascript:void(0)">
+        <a class="block block-transparent" href="{{url('/video')}}">
             <div class="block-content block-content-full bg-elegance text-center">
                 <div class="item item-2x item-circle bg-black-op-10 mx-auto mb-20">
                     <i class="fa fa-film text-elegance-lighter"></i>
