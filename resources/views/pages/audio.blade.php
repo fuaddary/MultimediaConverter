@@ -63,49 +63,51 @@
                     	<div class="col-12">
                             <label for="contact1-firstname">Audio Format</label>
                             <select class="form-control" id="audio_format" name="audio_format" size="1">
-					            <option value="jpg">.jpg</option>
-					            <option value="bmp">.bmp</option>
-					            <option value="tiff">.tiff</option>
-				                <option value="png">.png</option>
-				                <option value="ppm">.ppm</option>
-				                <option value="apng">.apng</option>
-				                <option value="dpx">.dpx</option>
-				                <option value="pam">.pam</option>
-				                <option value="pbm">.pbm</option>
-				                <option value="pcx">.pcx</option>
-				                <option value="pgm">.pgm</option>
-				                <option value="xbm">.xbm</option>
-				                <option value="xface">.xface</option>
-				                <option value="xwd">.xwd</option>
+                                <option value="mp3" >mp3</option>
+                                <option value="flac" >flac</option>
+                                <option value="ac3" >ac3</option>
+                                <option value="aiff" >aiff</option>
+                                <option value="ogg"  >ogg</option> 
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-6">
-                            <label for="height">Height</label>
-                            <input type="text" class="form-control" id="height" name="height" placeholder="Enter height..">
-                        </div>
-                        <div class="col-6">
-                            <label for="width">Width</label>
-                            <input type="text" class="form-control" id="width" name="width" placeholder="Enter width..">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-6">
-                            <label for="Depth">Depth</label>
-                            <input type="text" class="form-control" id="Depth" name="Depth" placeholder="Enter depth..">
-                        </div>
-                        <div class="col-6">
-                            <label for="rate">Conversion Rate</label>
-                            <input type="text" class="form-control" id="rate" name="rate" placeholder="Enter converion rate..">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-12" for="color">Colorspace</label>
                         <div class="col-12">
-                            <select class="form-control" id="color" name="color" size="1">
-                                <option value="rgb">RGB</option>
-                                <option value="grayscale">Grayscale</option>
+                            <label for="bitrate">Bitrate</label>
+                            <select class="form-control" id="bitrate" name="bitrate" size="1">
+                                <option disabled selected value><b>Choose Bitrate</b></option>
+                                <option value="56">56k</option>
+                                <option value="96">96k</option>
+                                <option value="128">128k</option>
+                                <option value="160">160k</option>
+                                <option value="192">192k</option>
+                                <option value="320">320k</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <label for="Sample">Sample Rate</label>
+                            <select class="form-control" id="Sample" name="Sample" size="1">
+                                <option selected value><b>Choose Sample Rate</b></option>
+                                <option value="8000" >8000</option>
+                                <option value="11025" >11025</option>
+                                <option value="16000" >16000</option>
+                                <option value="22050" >22050</option>
+                                <option value="32000" >32000</option>
+                                <option value="37800" >37800</option>
+                                <option value="44056" >44056</option>
+                                <option value="44100" >44100</option>
+                            </select>
+                        </div>
+                    </div>                    
+                    <div class="form-group row">
+                        <label class="col-12" for="channel">Audio Channel</label>
+                        <div class="col-12">
+                            <select class="form-control" id="channel" name="channel" size="1">
+                                <option disabled selected value><b>Choose audio channel</b></option>
+                                <option value="mono">Mono</option>
+                                <option value="stereo">Stereo</option>
                             </select>
                         </div>
                     </div>

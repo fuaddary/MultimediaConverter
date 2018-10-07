@@ -63,20 +63,20 @@
                     	<div class="col-12">
                             <label for="contact1-firstname">Image Format</label>
                             <select class="form-control" id="image_format" name="image_format" size="1">
-					            <option value="jpg">.jpg</option>
-					            <option value="bmp">.bmp</option>
-					            <option value="tiff">.tiff</option>
-				                <option value="png">.png</option>
-				                <option value="ppm">.ppm</option>
-				                <option value="apng">.apng</option>
-				                <option value="dpx">.dpx</option>
-				                <option value="pam">.pam</option>
-				                <option value="pbm">.pbm</option>
-				                <option value="pcx">.pcx</option>
-				                <option value="pgm">.pgm</option>
-				                <option value="xbm">.xbm</option>
-				                <option value="xface">.xface</option>
-				                <option value="xwd">.xwd</option>
+					            <option value="jpg">jpg</option>
+					            <option value="bmp">bmp</option>
+					            <option value="tiff">tiff</option>
+				                <option value="png">png</option>
+				                <option value="ppm">ppm</option>
+				                <option value="apng">apng</option>
+				                <option value="dpx">dpx</option>
+				                <option value="pam">pam</option>
+				                <option value="pbm">pbm</option>
+				                <option value="pcx">pcx</option>
+				                <option value="pgm">pgm</option>
+				                <option value="xbm">xbm</option>
+				                <option value="xface">xface</option>
+				                <option value="xwd">xwd</option>
                             </select>
                         </div>
                     </div>

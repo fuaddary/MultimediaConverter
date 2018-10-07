@@ -63,20 +63,9 @@
                     	<div class="col-12">
                             <label for="contact1-firstname">Video Format</label>
                             <select class="form-control" id="video_format" name="video_format" size="1">
-					            <option value="jpg">.jpg</option>
-					            <option value="bmp">.bmp</option>
-					            <option value="tiff">.tiff</option>
-				                <option value="png">.png</option>
-				                <option value="ppm">.ppm</option>
-				                <option value="apng">.apng</option>
-				                <option value="dpx">.dpx</option>
-				                <option value="pam">.pam</option>
-				                <option value="pbm">.pbm</option>
-				                <option value="pcx">.pcx</option>
-				                <option value="pgm">.pgm</option>
-				                <option value="xbm">.xbm</option>
-				                <option value="xface">.xface</option>
-				                <option value="xwd">.xwd</option>
+                                <option value="mp4">MP4</option>
+                                <option value="avi">AVI</option>
+                                <option value="webm">WEBM</option>
                             </select>
                         </div>
                     </div>
@@ -92,20 +81,35 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-6">
-                            <label for="Depth">Depth</label>
-                            <input type="text" class="form-control" id="Depth" name="Depth" placeholder="Enter depth..">
+                            <label for="bitrate">Bitrate</label>
+                            <select class="form-control" id="bitrate" name="bitrate" size="1">
+                                <option disabled selected value><b>Choose bitrate</b></option>
+                                <option value="56">56k</option>
+                                <option value="96">96k</option>
+                                <option value="128">128k</option>
+                                <option value="160">160k</option>
+                                <option value="192">192k</option>
+                                <option value="320">320k</option>
+                            </select>
                         </div>
+
                         <div class="col-6">
-                            <label for="rate">Conversion Rate</label>
-                            <input type="text" class="form-control" id="rate" name="rate" placeholder="Enter converion rate..">
+                            <label class="col-12" for="channel">Audio Channel</label>
+                            <select class="form-control" id="channel" name="channel" size="1">
+                                <option disabled selected value><b>Choose audio channel</b></option>
+                                <option value="mono">Mono</option>
+                                <option value="stereo">Stereo</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12" for="color">Colorspace</label>
+                        <label class="col-12" for="framerate">Framerate</label>
                         <div class="col-12">
-                            <select class="form-control" id="color" name="color" size="1">
-                                <option value="rgb">RGB</option>
-                                <option value="grayscale">Grayscale</option>
+                            <select class="form-control" id="framerate" name="framerate" size="1">
+                                <option disabled selected value><b>Choose framerate</b></option>
+                                <option value="25">25</option>
+                                <option value="30">30</option>
+                                <option value="60">60</option>
                             </select>
                         </div>
                     </div>
