@@ -13,12 +13,16 @@ class ImageController extends Controller
     }
     public function Convert(request $request)
     {
-    	//dd($request);
-    	//dd(public_path('output'));
+    	$name= $request->image;
+    	
     	$input = public_path('images').'/'.$request->image;
     	$output = public_path('output_image').'/'.$request->image;
-    	$resize = '-resize '.$request->width.'x'.$request->height;
-    	$all = 'convert '.$input.' '.$resize.' '.$output;
+    	$resize = ' -resize '.$request->width.'x'.$request->height;
+    	$quality = ' -quality '.$request->rate;
+    	$color = ' -colorspace '.$request->color;
+    	$depth = ' -colorspace '.$request->depth;
+    	$all = 'convert '.$input.$resize.$color.$depth.$quality.' '.$output;
+    	//dd($all);
     	$process = new Process ($all);
     	$process->run();
     	$new_name = $request->image;
@@ -49,7 +53,7 @@ class ImageController extends Controller
 	    // if($validation->passes())
 	    // {
 		    $image = $request->file('select_file');
-		    $new_name = rand() . '.' . $image->getClientOriginalExtension();
+		    $new_name = $image->getClientOriginalName();
 		    $image->move(public_path('images'), $new_name);
 		    return response()->json([
 		    'message'   => 'Image Upload Successfully',

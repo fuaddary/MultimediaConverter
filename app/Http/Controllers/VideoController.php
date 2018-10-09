@@ -13,8 +13,7 @@ class VideoController extends Controller
     }
     public function Convert(request $request)
     {
-    	//dd($request);
-    	//dd(public_path('output'));
+
     	$input = public_path('videos').'/'.$request->image;
     	$output = public_path('output_video').'/'.$request->image;
     	$resize = '-resize '.$request->width.'x'.$request->height;
@@ -46,7 +45,11 @@ class VideoController extends Controller
 	    $video->move(public_path('videos'), $new_name);
 	    return response()->json([
 	    'message'   => 'video Upload Successfully',
-	    'uploaded_video' => '<img src="/videos/'.$new_name.'" class="img-thumbnail"/>',
+	    'uploaded_video' => '<video width="100%" controls>
+							  <source src="/videos/'.$new_name.'" type="video/mp4">
+							  <source src="/videos/'.$new_name.'" type="video/ogg">
+							  Your browser does not support the video tag.
+							</video>',
 	    'class_name'  => 'alert-success',
 	    'video' => $new_name
 	    ]);

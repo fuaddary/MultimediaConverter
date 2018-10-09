@@ -104,8 +104,8 @@
                         <label class="col-12" for="color">Colorspace</label>
                         <div class="col-12">
                             <select class="form-control" id="color" name="color" size="1">
-                                <option value="rgb">RGB</option>
-                                <option value="grayscale">Grayscale</option>
+                                <option value="RGB ">RGB</option>
+                                <option value="gray">Grayscale</option>
                             </select>
                         </div>
                     </div>

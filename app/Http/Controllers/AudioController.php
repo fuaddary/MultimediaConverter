@@ -46,7 +46,11 @@ class audioController extends Controller
 	    $audio->move(public_path('audios'), $new_name);
 	    return response()->json([
 	    'message'   => 'audio Upload Successfully',
-	    'uploaded_audio' => '<img src="/audios/'.$new_name.'" class="img-thumbnail"/>',
+	    'uploaded_audio' => '<audio controls>
+							  	<source src="audios/'.$new_name.'" type="audio/ogg">
+							  	<source src="audios/'.$new_name.'" type="audio/mpeg">
+								Your browser does not support the audio element.
+							</audio>',
 	    'class_name'  => 'alert-success',
 	    'audio' => $new_name
 	    ]);

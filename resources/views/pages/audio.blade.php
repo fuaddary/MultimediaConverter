@@ -9,6 +9,10 @@
 	input[type="file"] {
 	    display: none;
 	}
+
+  audio{
+    width: 100%;
+  }
 </style>
 @endsection
 
