@@ -39,8 +39,10 @@
 			</div>
 		</form>
 
-		<span id="uploaded_image"></span>
+    <span id="uploaded_image"></span>
+    <span id="message"></span>
 		<span id="output_image"></span>
+    <span id="message2"></span>
 
 	</div>
 
@@ -93,7 +95,7 @@
                     <div class="form-group row">
                         <div class="col-6">
                             <label for="Depth">Depth</label>
-                            <input type="text" class="form-control" id="Depth" name="Depth" placeholder="Enter depth..">
+                            <input type="text" class="form-control" id="depth" name="depth" placeholder="Enter depth..">
                         </div>
                         <div class="col-6">
                             <label for="rate">Conversion Rate</label>

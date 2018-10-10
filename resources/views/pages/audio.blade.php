@@ -44,7 +44,9 @@
 		</form>
 
 		<span id="uploaded_audio"></span>
+    <span id="message"></span>
 		<span id="output_audio"></span>
+    <span id="message2"></span>
 
 	</div>
 
@@ -92,7 +94,7 @@
                     <div class="form-group row">
                         <div class="col-12">
                             <label for="Sample">Sample Rate</label>
-                            <select class="form-control" id="Sample" name="Sample" size="1">
+                            <select class="form-control" id="sample" name="sample" size="1">
                                 <option selected value><b>Choose Sample Rate</b></option>
                                 <option value="8000" >8000</option>
                                 <option value="11025" >11025</option>
