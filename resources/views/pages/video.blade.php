@@ -39,8 +39,10 @@
 			</div>
 		</form>
 
-		<span id="uploaded_video"></span>
+    <span id="uploaded_video"></span>
+		<span id="message"></span>
 		<span id="output_video"></span>
+    <span id="message2"></span>
 
 	</div>
 

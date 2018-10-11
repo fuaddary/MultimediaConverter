@@ -6,32 +6,44 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 use Illuminate\Http\Request;
 use Validator;
 
-class AudioController extends Controller
+class videoController extends Controller
 {
     public function Index()
     {
-    	return view('pages.audio');
+    	return view('pages.video');
     }
     public function Convert(request $request)
     {
     	$milliseconds = round(microtime(true) * 1000); //get time in ms
 
-    	$name= $request->audio;
+    	$name= $request->video;
     	
-    	$input = public_path('audios').'/'.$request->audio;
+    	$input = public_path('videos').'/'.$request->video;
 		$info = pathinfo($input);
 	
 		// get the filename without the extension
-		$audio_name =  basename($input,'.'.$info['extension']);
-		$new_name = $audio_name.'.'.$request->audio_format;
+		$video_name =  basename($input,'.'.$info['extension']);
+		$new_name = $video_name.'.'.$request->video_format;
 
-    	$output = public_path('output_audio').'/'.$new_name;
+    	$output = public_path('output_video').'/'.$new_name;
 
-    	$bitrate = ($request->bitrate ? " -ab ".$request->bitrate : ""); //if user use bitrate to convert the audio
-		$sample_rate = ($request->sample ? " -ar ".$request->sample : ""); //if user use sample_rate to convert the audio
-		$channel = ($request->channel ? " -ac ".$request->channel : ""); //if user use channel (mono or stereo) to convert the audio
+    	$height = $request->height;
+    	$width = $request->width;
+    	$bitrate = $request->bitrate;
+    	$videoChannel = $request->channel;
+    	$fileFormat = $request->formatVideo;
+    	$frameRate = $request->framerate;
 
-		$all = "ffmpeg -i ".$input.$bitrate." ".$sample_rate.$channel." -y ".$output;
+    	$all = "ffmpeg -i ". $input
+	    		// ." -ac ". $videoChannel
+	    		." -r ". $frameRate
+	    		." -s ". $width. "x". $height 
+	    		." -aspect ". $width .":". $height 
+	    		." -b:v ". $bitrate ."k"
+	    		." -bufsize ". $bitrate ."k"
+	    		." -maxrate ". $bitrate ."k"
+	    		// ." -sn -f ". $fileFormat 
+	    		." -y ".$output;
 
     	$process = new Process ($all);
     	$process->run();
@@ -41,31 +53,31 @@ class AudioController extends Controller
 
 		// if($status)
 		// {
-		// 	return redirect(route('audio.index'))->with('error', 'Gagal Convert audio');		
+		// 	return redirect(route('video.index'))->with('error', 'Gagal Convert video');		
 		// }
 		if (!$process->isSuccessful()) {
 		    $error = new ProcessFailedException($process);
 		    return response()->json([
-			    'message'   => 'audio failed to convert :'.$sample_rate.'.',
-			    'uploaded_audio' => '',
+			    'message'   => 'video failed to convert :'.$error.'.',
+			    'uploaded_video' => '',
 			    'class_name'  => 'alert-danger',
-			    'audio' => $new_name
+			    'video' => $new_name
 		    ]);		
 		}
 		else{
 			return response()->json([
-		    'message'   => 'audio converted Successfully in '.$hasil.' miliseconds',
-		    'uploaded_audio' => '<audio width="100%" controls>
-							  <source src="/audios/'.$new_name.'" type="audio/mp3">
-							  <source src="/audios/'.$new_name.'" type="audio/ogg">
-							  Your browser does not support the audio tag.
-							</audio>',
+		    'message'   => 'video converted Successfully in '.$hasil.' miliseconds',
+		    'uploaded_video' => '<video width="100%" controls>
+							  <source src="/videos/'.$new_name.'" type="video/mp3">
+							  <source src="/videos/'.$new_name.'" type="video/ogg">
+							  Your browser does not support the video tag.
+							</video>',
 		    'class_name'  => 'alert-success',
-		    'audio' => $new_name
+		    'video' => $new_name
 		    ]);		
 		} 
     }
-    public function Uploadaudio(Request $request)
+    public function Uploadvideo(Request $request)
     {
 	    $validation = Validator::make($request->all(), [
 	    	'select_file' => 'required|max:10096'
@@ -74,25 +86,25 @@ class AudioController extends Controller
 
 	    if($validation->passes())
 	    {
-		    $audio = $request->file('select_file');
-		    $new_name = $audio->getClientOriginalName();
-		    $audio->move(public_path('audios'), $new_name);
+		    $video = $request->file('select_file');
+		    $new_name = $video->getClientOriginalName();
+		    $video->move(public_path('videos'), $new_name);
 		    return response()->json([
-		    'message'   => 'audio Upload Successfully',
-		    'uploaded_audio' => '<audio width="100%" controls>
-							  <source src="/audios/'.$new_name.'" type="audio/mp3">
-							  <source src="/audios/'.$new_name.'" type="audio/ogg">
-							  Your browser does not support the audio tag.
-							</audio>',
+		    'message'   => 'video Upload Successfully',
+		    'uploaded_video' => '<video width="100%" controls>
+							  <source src="/videos/'.$new_name.'" type="video/mp3">
+							  <source src="/videos/'.$new_name.'" type="video/ogg">
+							  Your browser does not support the video tag.
+							</video>',
 		    'class_name'  => 'alert-success',
-		    'audio' => $new_name
+		    'video' => $new_name
 		    ]);
 	    }
 	    else
 	    {
 		    return response()->json([
 		    'message'   => $validation->errors()->all(),
-		    'uploaded_audio' => '',
+		    'uploaded_video' => '',
 		    'class_name'  => 'alert-danger'
 		    ]);
 	    }
