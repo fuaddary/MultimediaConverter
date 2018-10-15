@@ -99,8 +99,8 @@
                             <label class="col-12" for="channel">Audio Channel</label>
                             <select class="form-control" id="channel" name="channel" size="1">
                                 <option disabled selected value><b>Choose audio channel</b></option>
-                                <option value="mono">Mono</option>
-                                <option value="stereo">Stereo</option>
+                                <option value="1">Mono</option>
+                                <option value="2">Stereo</option>
                             </select>
                         </div>
                     </div>

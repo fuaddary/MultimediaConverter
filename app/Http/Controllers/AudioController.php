@@ -31,7 +31,7 @@ class AudioController extends Controller
 		$sample_rate = ($request->sample ? " -ar ".$request->sample : ""); //if user use sample_rate to convert the audio
 		$channel = ($request->channel ? " -ac ".$request->channel : ""); //if user use channel (mono or stereo) to convert the audio
 
-		$all = "ffmpeg -i ".$input.$bitrate." ".$sample_rate.$channel." -y ".$output;
+		$all = "ffmpeg -i ".$input.$bitrate." ".$sample_rate." ".$channel." -y ".$output;
 
     	$process = new Process ($all);
     	$process->run();
@@ -46,7 +46,7 @@ class AudioController extends Controller
 		if (!$process->isSuccessful()) {
 		    $error = new ProcessFailedException($process);
 		    return response()->json([
-			    'message'   => 'audio failed to convert :'.$sample_rate.'.',
+			    'message'   => 'audio failed to convert :'.$error.'.',
 			    'uploaded_audio' => '',
 			    'class_name'  => 'alert-danger',
 			    'audio' => $new_name
@@ -56,10 +56,13 @@ class AudioController extends Controller
 			return response()->json([
 		    'message'   => 'audio converted Successfully in '.$hasil.' miliseconds',
 		    'uploaded_audio' => '<audio width="100%" controls>
-							  <source src="/audios/'.$new_name.'" type="audio/mp3">
-							  <source src="/audios/'.$new_name.'" type="audio/ogg">
+							  <source src="/output_audio/'.$new_name.'" type="audio/mp3">
+							  <source src="/output_audio/'.$new_name.'" type="audio/ogg">
+
 							  Your browser does not support the audio tag.
-							</audio>',
+							</audio>
+							<a href="/output_audio/'.$new_name.'"> Download Output</a>
+							',
 		    'class_name'  => 'alert-success',
 		    'audio' => $new_name
 		    ]);		

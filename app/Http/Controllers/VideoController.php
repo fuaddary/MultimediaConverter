@@ -35,7 +35,7 @@ class videoController extends Controller
     	$frameRate = $request->framerate;
 
     	$all = "ffmpeg -i ". $input
-	    		// ." -ac ". $videoChannel
+	    		." -ac ". $videoChannel
 	    		." -r ". $frameRate
 	    		." -s ". $width. "x". $height 
 	    		." -aspect ". $width .":". $height 
@@ -51,10 +51,6 @@ class videoController extends Controller
     	$millisecondsend = round(microtime(true) * 1000); //get time in ms after process convert
 		$hasil = (float)$millisecondsend - $milliseconds; //difference beetween get time in ms before process and git time in ms after process convert
 
-		// if($status)
-		// {
-		// 	return redirect(route('video.index'))->with('error', 'Gagal Convert video');		
-		// }
 		if (!$process->isSuccessful()) {
 		    $error = new ProcessFailedException($process);
 		    return response()->json([
@@ -68,10 +64,11 @@ class videoController extends Controller
 			return response()->json([
 		    'message'   => 'video converted Successfully in '.$hasil.' miliseconds',
 		    'uploaded_video' => '<video width="100%" controls>
-							  <source src="/videos/'.$new_name.'" type="video/mp3">
-							  <source src="/videos/'.$new_name.'" type="video/ogg">
+							  <source src="/output_video/'.$new_name.'" type="video/mp3">
+							  <source src="/output_video/'.$new_name.'" type="video/ogg">
 							  Your browser does not support the video tag.
-							</video>',
+							</video>
+							<a href="/output_video/'.$new_name.'"> Download Output</a>',
 		    'class_name'  => 'alert-success',
 		    'video' => $new_name
 		    ]);		

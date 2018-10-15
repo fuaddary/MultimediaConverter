@@ -45,10 +45,15 @@ class ImageController extends Controller
     	$millisecondsend = round(microtime(true) * 1000); //get time in ms after process convert
 		$hasil = (float)$millisecondsend - $milliseconds; //difference beetween get time in ms before process and git time in ms after process convert
 
-		// if($status)
-		// {
-		// 	return redirect(route('image.index'))->with('error', 'Gagal Convert Image');		
-		// }
+
+	    $info = "exiv2 ".$output;
+	    $process2 = new Process($info);
+		$process2->run();
+		$output = $process2->getOutput();
+		$target = "File size";
+		$pos = strpos($output, $target);
+		$final = substr($output, $pos);
+
 		if (!$process->isSuccessful()) {
 		    $error = new ProcessFailedException($process);
 		    return response()->json([
@@ -60,11 +65,11 @@ class ImageController extends Controller
 		}
 		else{
 			return response()->json([
-		    'message'   => 'Image converted Successfully in '.$hasil.' miliseconds',
+		    'message'   => 'Image converted Successfully in '.$hasil.' miliseconds <br>'.$final,
 		    'uploaded_image' => '<img src="/output_image/'.$new_name.'" class="img-thumbnail"/>',
 		    'class_name'  => 'alert-success',
 		    'image' => $new_name
-		    ]);		
+		    ]);	
 		} 
     }
     public function UploadImage(Request $request)
@@ -79,8 +84,18 @@ class ImageController extends Controller
 		    $image = $request->file('select_file');
 		    $new_name = $image->getClientOriginalName();
 		    $image->move(public_path('images'), $new_name);
+		    $input = public_path('images').'/'.$new_name;
+
+		    $info = "exiv2 ".$input;
+		    $process2 = new Process($info);
+			$process2->run();
+			$output = $process2->getOutput();
+			$target = "File size";
+			$pos = strpos($output, $target);
+			$final = substr($output, $pos);
+
 		    return response()->json([
-		    'message'   => 'Image Upload Successfully',
+		    'message'   => 'Image Upload Successfully <br> '.$final,
 		    'uploaded_image' => '<img src="/images/'.$new_name.'" class="img-thumbnail"/>',
 		    'class_name'  => 'alert-success',
 		    'image' => $new_name

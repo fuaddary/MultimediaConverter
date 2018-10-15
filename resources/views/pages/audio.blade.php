@@ -82,12 +82,12 @@
                             <label for="bitrate">Bitrate</label>
                             <select class="form-control" id="bitrate" name="bitrate" size="1">
                                 <option disabled selected value><b>Choose Bitrate</b></option>
-                                <option value="56">56k</option>
-                                <option value="96">96k</option>
-                                <option value="128">128k</option>
-                                <option value="160">160k</option>
-                                <option value="192">192k</option>
-                                <option value="320">320k</option>
+                                <option value="56k">56k</option>
+                                <option value="96k">96k</option>
+                                <option value="128k">128k</option>
+                                <option value="160k">160k</option>
+                                <option value="192k">192k</option>
+                                <option value="320k">320k</option>
                             </select>
                         </div>
                     </div>
@@ -112,8 +112,8 @@
                         <div class="col-12">
                             <select class="form-control" id="channel" name="channel" size="1">
                                 <option disabled selected value><b>Choose audio channel</b></option>
-                                <option value="mono">Mono</option>
-                                <option value="stereo">Stereo</option>
+                                <option value="1">Mono</option>
+                                <option value="2">Stereo</option>
                             </select>
                         </div>
                     </div>
